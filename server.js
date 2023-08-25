@@ -20,13 +20,14 @@ const FRONTEND = process.env.FRONTEND;
 
 var corsOptions = {
   origin: FRONTEND,
-  optionsSuccessStatus: 200,
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//routes
 app.use("/api/products", productRoute);
 app.get("/", (req, res) => {
   //throw new Error("fake error");
@@ -49,6 +50,6 @@ mongoose
       console.log("Node is running on port ${PORT}");
     });
   })
-  .catch(() => {
+  .catch((error) => {
     console.log(error);
   });
