@@ -13,11 +13,17 @@ const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
 //how can you acces this through browser?you have to declare/set up a route.
 //app.get('/',(req, res)) request is what client sends to you and response is what you respond back to the client
-
+const FRONTEND = process.env.FRONTEND;
 //middleware
 //you can also use the body parser npm package instead of app.use(express.urlencoded({ extended: false }));
 //https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded
-app.use(cors());
+
+var corsOptions = {
+  origin: FRONTEND,
+  optionsSuccessStatus: 200;
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
