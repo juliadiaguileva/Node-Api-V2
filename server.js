@@ -20,8 +20,8 @@ const FRONTEND = process.env.FRONTEND;
 
 var corsOptions = {
   origin: FRONTEND,
-  optionsSuccessStatus: 200;
-}
+  optionsSuccessStatus: 200,
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
